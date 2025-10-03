@@ -1,4 +1,4 @@
-import Joueur from "./joueur.js";
+import Joueur from "./modules/joueur.js";
 
 class P4 {
   constructor(rows=6, cols=7, player1=new Joueur("Joueur 1",1,"#ff0000"), player2=new Joueur("Joueur 2",2,"#ffff00"), mode="2joueurs", difficulte="facile") {
