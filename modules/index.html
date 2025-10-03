@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puissance 4</title>
+    <link rel="stylesheet" href="../style/style.css">
+</head>
+<body>
+    <h1>Puissance 4</h1>
+    <div>
+        <div id="playerIndicator">
+            Tour du joueur : <span id="currentPlayerName">C'est à vous de jouer !</span>
+        </div>
+
+        <label for="rows">Lignes:</label>
+        <input type="number" id="rows" value="6" min="4" max="10">
+        <label for="cols">Colonnes:</label>
+        <input type="number" id="cols" value="7" min="4" max="10">
+        <button id="setDimensions">Régler Dimensions</button>
+    </div>
+    <div>
+        <label for="player1Name">Nom du Joueur 1:</label>
+        <input type="text" id="player1Name" value="Joueur 1">
+        <label for="player1Color">Couleur du Joueur 1:</label>
+        <input type="color" id="player1Color" value="#ff0000">
+    </div>
+    <div>
+        <label for="player2Name">Nom du Joueur 2:</label>
+        <input type="text" id="player2Name" value="Joueur 2">
+        <label for="player2Color">Couleur du Joueur 2:</label>
+        <input type="color" id="player2Color" value="#ffff00">
+    </div>
+    <button id="startGame">Démarrer le Jeu</button>
+    <div id="game"></div>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+body {
+    font-family: 'Press Start 2P', cursive;
+    text-align: center;
+    background-image: url('/assets/dk.gif');
+    background-size: cover;
+   
+    color: #FFD700;
+}
+
+h1 {
+    color: #8B0000;
+    text-shadow: 3px 3px #000;
+}
+
+#game {
+    display: grid;
+    grid-template-columns: repeat(7, 80px);
+    grid-template-rows: repeat(6, 80px);
+    gap: 5px;
+    padding: 10px;
+    width: max-content;
+    margin: auto;
+    border: 5px solid #8B0000;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.7);
+}
+
+.cell {
+    width: 80px;
+    height: 80px;
+    background-color: #D2B48C;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.cell[data-player="1"] {
+    background-color: #FF0000;
+    box-shadow: inset 0px 0px 10px #8B0000;
+}
+
+.cell[data-player="2"] {
+    background-color: #FFD700;
+    box-shadow: inset 0px 0px 10px #DAA520;
+}
+
+#indicator {
+    margin: 20px;
+    font-size: 20px;
+    color: #FFD700;
+    font-weight: bold;
+    text-shadow: 2px 2px #000;
+}
+
+#currentPlayer {
+    font-size: 24px;
+    color: #8B0000;
+    text-shadow: 2px 2px #000;
+}
+
+#currentPlayerName {
+    color: #FFD700;
+    text-shadow: 2px 2px #000;
+}
+
+
+input[type="number"], input[type="text"] {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 14px;
+    padding: 8px;
+    margin: 5px;
+    border: 3px solid #8B0000;
+    background-color: #222;
+    color: #FFD700;
+    text-align: center;
+    outline: none;
+    box-shadow: 3px 3px 0px #000;
+}
+
+input[type="number"]::placeholder, 
+input[type="text"]::placeholder {
+    color: #FFD700;
+}
+
+input[type="color"] {
+    width: 50px;
+    height: 50px;
+    border: none;
+    cursor: pointer;
+    margin: 5px;
+    box-shadow: 3px 3px 0px #000;
+}
+
+
+
+button {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 14px;
+    padding: 10px 20px;
+    margin: 10px;
+    border: 3px solid #8B0000;
+    background-color: #222;
+    color: #FFD700;
+    cursor: pointer;
+    text-transform: uppercase;
+    box-shadow: 3px 3px 0px #000;
+    transition: all 0.2s;
+}
+
+button:hover {
+    background-color: #8B0000;
+    color: #fff;
+    box-shadow: 3px 3px 0px #FFD700;
+}
+
+
+div {
+    margin-bottom: 15px;
+}
