@@ -1,3 +1,4 @@
+/* 🌌 Style général */
 body {
     font-family: 'Press Start 2P', cursive;
     text-align: center;
@@ -5,12 +6,13 @@ body {
     padding: 0;
     background-image: url('/assets/dk.gif');
     background-size: cover;
+    background-position: center;
     position: relative;
     min-height: 100vh;
     color: #FFD700;
 }
 
-/* Overlay noir transparent sur tout le fond */
+/* Overlay noir transparent */
 body::before {
     content: "";
     position: fixed;
@@ -18,11 +20,10 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.6);
+    background-color: rgba(0,0,0,0.5);
     z-index: 0;
 }
 
-/* Tout le contenu au-dessus de l'overlay */
 body > * {
     position: relative;
     z-index: 1;
@@ -31,23 +32,30 @@ body > * {
 h1 {
     color: #8B0000;
     text-shadow: 3px 3px #000;
+    font-size: clamp(16px, 4vw, 32px);
+    margin-top: 1rem;
 }
 
+/* 🎮 Grille du jeu (corrigée et responsive) */
 #game {
     display: grid;
-    grid-template-columns: repeat(7, 80px);
-    grid-template-rows: repeat(6, 80px);
-    gap: 5px;
-    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 0.6vw;
+    padding: 2vw;
     width: max-content;
     margin: auto;
-    border: 5px solid #8B0000;
+    border: 0.5vw solid #8B0000;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.7);
+    max-width: 95vw;
+    overflow-x: auto;
+    transition: all 0.3s ease-in-out;
 }
 
+/* 🎨 Cellules du plateau */
 .cell {
-    width: 80px;
-    height: 80px;
+    width: 100%;
+    aspect-ratio: 1 / 1;
     background-color: #D2B48C;
     border-radius: 50%;
     display: flex;
@@ -55,6 +63,11 @@ h1 {
     justify-content: center;
     cursor: pointer;
     box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.5);
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.cell:hover {
+    transform: scale(1.08);
 }
 
 .cell[data-player="1"] {
@@ -67,47 +80,44 @@ h1 {
     box-shadow: inset 0px 0px 10px #DAA520;
 }
 
-input[type="number"], input[type="text"], input[type="color"], label, span, .config {
+/* 🧩 Formulaires et boutons */
+input[type="number"], input[type="text"], input[type="color"], label, span, .config,
+button, .difficulteBtn {
     font-family: 'Press Start 2P', cursive;
-    font-size: 14px;
+    font-size: clamp(10px, 2vw, 14px);
     color: #FFD700;
-    outline: none;
 }
 
 input[type="number"], input[type="text"] {
-    padding: 8px;
-    margin: 5px;
+    padding: 0.5em;
+    margin: 0.4em;
     border: 3px solid #8B0000;
     background-color: #222;
     text-align: center;
     box-shadow: 3px 3px 0px #000;
+    width: clamp(80px, 30vw, 200px);
 }
 
 input[type="color"] {
-    width: 50px;
-    height: 50px;
+    width: clamp(30px, 10vw, 50px);
+    height: clamp(30px, 10vw, 50px);
     border: none;
     cursor: pointer;
     margin: 5px;
     box-shadow: 3px 3px 0px #000;
 }
 
-/* Tous les boutons et boutons de difficulté */
 button, .difficulteBtn {
-    font-family: 'Press Start 2P', cursive;
-    font-size: 14px;
-    padding: 10px 20px;
-    margin: 10px 5px;
+    padding: 0.6em 1.2em;
+    margin: 0.5em;
     border: 3px solid #8B0000;
     background-color: #222;
-    color: #FFD700;
     cursor: pointer;
     text-transform: uppercase;
     box-shadow: 3px 3px 0px #000;
     transition: all 0.2s;
 }
 
-/* Hover, Focus, Active et Selected */
 button:hover, button:focus, button:active,
 .difficulteBtn:hover, .difficulteBtn:focus, .difficulteBtn:active,
 button.selected, .difficulteBtn.selected {
@@ -122,5 +132,90 @@ button:active, .difficulteBtn:active {
 }
 
 div {
-    margin-bottom: 15px;
+    margin-bottom: 1rem;
+}
+
+/* 🎵 Conteneur boutons flottants */
+#toggleContainer {
+    position: fixed;
+    right: 25px;
+    top: 5vh;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 10;
+}
+
+/* Boutons music / coin */
+#musicToggle, #coinToggle {
+    background-color: #222;
+    border: 3px solid #8B0000;
+    padding: 8px 16px;
+    border-radius: 8px;
+    box-shadow: 3px 3px 0px #000;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+
+/* Position fluide (desktop) */
+#musicToggle { top: clamp(20px, 5vh, 100px); }
+#coinToggle { top: clamp(60px, 10vh, 160px); }
+
+#musicToggle:hover, #coinToggle:hover {
+    background-color: #8B0000;
+    box-shadow: 3px 3px 0px #FFD700;
+}
+
+#musicToggle:active, #coinToggle:active {
+    transform: translateY(2px);
+    box-shadow: 1px 1px 0px #000;
+}
+
+/* 📱 Responsive : petits écrans */
+@media (max-width: 750px) {
+    #toggleContainer {
+        flex-direction: row;
+        position: fixed;
+        top: 2vh;
+        right: 10px;
+        bottom: auto;
+        gap: 6px;
+    }
+
+    #musicToggle, #coinToggle {
+        font-size: 12px !important;
+        padding: 4px 6px !important;
+        border-width: 2px;
+        transform: translateY(-10px);
+    }
+
+    #game {
+        gap: 1vw;
+        padding: 3vw;
+        border-width: 0.8vw;
+    }
+}
+
+/* Config responsive : inputs et labels passent en colonne */
+.config {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+@media (max-width: 600px) {
+    .config {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .config label,
+    .config input,
+    .config button {
+        width: 100%;
+        text-align: center;
+    }
 }

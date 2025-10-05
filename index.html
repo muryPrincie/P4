@@ -3,63 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Puissance 4</title>
+    <title>Puissance KONG</title>
     <link rel="stylesheet" href="../style/style.css">
 </head>
 <body>
-    <h1>Puissance KONG</h1>
+    <div id="container">
+        <h1>Puissance KONG</h1>
 
-    <!-- Indicateur du joueur -->
-    <div id="playerIndicator">
-        Tour du joueur : <span id="currentPlayerName">C'est à vous de jouer !</span>
+        <!-- Indicateur du joueur -->
+        <div id="playerIndicator">
+            Tour du joueur : <span id="currentPlayerName">C'est à vous de jouer !</span>
+        </div>
+
+        <!-- Dimensions de la grille -->
+        <div class="config">
+            <label for="rows">Lignes :</label>
+            <input type="number" id="rows" value="6" min="4" max="10">
+            <label for="cols">Colonnes :</label>
+            <input type="number" id="cols" value="7" min="4" max="10">
+            <button id="setDimensions">Régler Dimensions</button>
+        </div>
+
+        <!-- Joueur 1 -->
+        <div class="config">
+            <label for="player1Name">Nom du Joueur 1 :</label>
+            <input type="text" id="player1Name" value="Joueur 1">
+            <label for="player1Color">Couleur du Joueur 1 :</label>
+            <input type="color" id="player1Color" value="#ff0000">
+        </div>
+
+        <!-- Joueur 2 -->
+        <div class="config">
+            <label for="player2Name">Nom du Joueur 2 :</label>
+            <input type="text" id="player2Name" value="Joueur 2">
+            <label for="player2Color">Couleur du Joueur 2 :</label>
+            <input type="color" id="player2Color" value="#ffff00">
+        </div>
+
+        <!-- Choix mode -->
+        <div class="config">
+            <button id="modeOrdiBtn">Ordinateur : ON</button>
+        </div>
+
+        <!-- Choix de difficulté -->
+        <div class="config" id="difficulteContainer">
+            <span>Difficulté :</span>
+            <button class="difficulteBtn" data-level="facile">Facile</button>
+            <button class="difficulteBtn" data-level="moyen">Moyen</button>
+            <button class="difficulteBtn" data-level="difficile">Difficile</button>
+        </div>
+
+        <!-- Bouton démarrer -->
+        <button id="startGame">Démarrer le Jeu</button>
+
+        <!-- Grille du jeu -->
+        <div id="game"></div>
     </div>
 
-    <!-- Dimensions de la grille -->
-    <div class="config">
-        <label for="rows">Lignes:</label>
-        <input type="number" id="rows" value="6" min="4" max="10">
-        <label for="cols">Colonnes:</label>
-        <input type="number" id="cols" value="7" min="4" max="10">
-        <button id="setDimensions">Régler Dimensions</button>
-    </div>
-
-    <!-- Joueur 1 -->
-    <div class="config">
-        <label for="player1Name">Nom du Joueur 1:</label>
-        <input type="text" id="player1Name" value="Joueur 1">
-        <label for="player1Color">Couleur du Joueur 1:</label>
-        <input type="color" id="player1Color" value="#ff0000">
-    </div>
-
-    <!-- Joueur 2 -->
-    <div class="config">
-        <label for="player2Name">Nom du Joueur 2:</label>
-        <input type="text" id="player2Name" value="Joueur 2">
-        <label for="player2Color">Couleur du Joueur 2:</label>
-        <input type="color" id="player2Color" value="#ffff00">
-    </div>
-
-<!-- Choix mode -->
-<div class="config">
-    <button id="modeOrdiBtn">Ordinateur : ON</button>
-</div>
-
-<!-- Choix de difficulté (activé seulement si mode Ordi ON) -->
-<div class="config" id="difficulteContainer">
-    <span>Difficulté :</span>
-    <button class="difficulteBtn" data-level="facile">Facile</button>
-    <button class="difficulteBtn" data-level="moyen">Moyen</button>
-    <button class="difficulteBtn" data-level="difficile">Difficile</button>
-</div>
-
- 
-
-    <!-- Bouton démarrer -->
-    <button id="startGame">Démarrer le Jeu</button>
-
-    <!-- Grille du jeu -->
-    <div id="game"></div>
-
-    <script type="module" src="script.js"></script>
+    <!-- On importe uniquement ordi.js, qui importe joueur.js et script.js -->
+    <script type="module" src="ordi.js"></script>
 </body>
 </html>
